@@ -1,0 +1,34 @@
+Arguments: 
+  C:\Node\NodeJS\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add redux
+
+PATH: 
+  C:\Program Files\ImageMagick-7.0.7-Q16;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\ImageMagick-7.0.5-Q16;C:\Program Files\ImageMagick-6.9.3-Q16-HDRI;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;c:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Pages\v1.0\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\MongoDB\Server\3.0\bin;C:\Users\wellerson.roberto\AppData\Local\Programs\Python\Python35;C:\Users\wellerson.roberto\AppData\Roaming\npm\node_modules\mocha-casperjs\bin;C:\Program Files\PhantomJS1.9;C:\WINDOWS\system32\config\systemprofile\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Projetos GeoHub\Portal;C:\Users\wellerson.roberto\AppData\Local\Android\android-sdk\platform-tools;C:\Node\NVM;C:\Node\NodeJS;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\MinGW\bin;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\gs\gs9.20\bin;C:\GDAL;C:\curl;C:\Program Files\dotnet\;C:\ProgramData\chocolatey\bin;C:\Program Files\Java\jdk1.8.0_131\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Redis\;C:\Program Files\Git\cmd;C:\Program Files\PuTTY\;C:\Program Files (x86)\Yarn\bin;C:\Users\wellerson.roberto\AppData\Local\atom\bin;C:\Node\NVM;C:\Node\NodeJS;C:\Users\wellerson.roberto\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Microsoft VS Code Insiders\bin;C:\Users\wellerson.roberto\AppData\Local\Yarn\bin
+
+Yarn version: 
+  1.3.2
+
+Node version: 
+  8.5.0
+
+Platform: 
+  win32 x64
+
+npm manifest: 
+  {
+    "main": "node_modules/expo/AppEntry.js",
+    "private": true,
+    "dependencies": {
+      "expo": "^23.0.0",
+      "react": "16.0.0",
+      "react-native": "https://github.com/expo/react-native/archive/sdk-23.0.0.tar.gz"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: EPERM: operation not permitted, unlink 'C:\React\expo-flashcard\node_modules\boom\images'
