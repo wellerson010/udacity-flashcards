@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TextInput, Button } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 
 import Styles from '../utils/styles';
@@ -35,21 +35,28 @@ class EditDeck extends React.Component {
         const { decks } = this.props;
 
         return (
-            <View style={Styles.container}>
-                <Text>Title: </Text>
+            <View style={[Styles.container, Styles.containerPadding]}>
+                <Text style={styles.title}>Title</Text>
                 <TextInput
+                    style={Styles.input}
                     value={title}
                     onChangeText={(value) => this.setState({title: value})}
                 />
 
                 <Button 
                     onPress={this.save}
-                    title='Create Deck'
+                    title='Criar Deck'
                 />
             </View>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    title: {
+        fontSize: 20
+    }
+});
 
 const mapStateToProps = (state) => ({
     decks: state

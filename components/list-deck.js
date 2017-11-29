@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, Text, ToolbarAndroid, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
+import { Ionicons } from '@expo/vector-icons'
 
 import Styles from '../utils/styles';
 
 class ListDeck extends React.Component {
     actionsToolbar = [{
-        title: 'Add Card',
-        icon: require('../assets/plus.png'),
+        title: 'Adicionar Deck',
         show: 'always'
     }];
 
@@ -64,7 +64,8 @@ class ListDeck extends React.Component {
 
 const styles = StyleSheet.create({
     toolbar: {
-        height: 54
+        height: 54,
+        backgroundColor: '#43a1f8'
     },
     itemList: {
         padding: 15

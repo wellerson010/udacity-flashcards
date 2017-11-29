@@ -16,6 +16,12 @@ import reducer from './reducers';
 
 import { notification } from './utils/helper';
 
+const styles = StyleSheet.create({
+  headerNavigation: {
+      backgroundColor: '#43a1f8'
+  }
+});
+
 const Stack = StackNavigator({
   ListDeck: {
     screen: ListDeck,
@@ -24,10 +30,16 @@ const Stack = StackNavigator({
     }
   },
   EditDeck: {
-    screen: EditDeck
+    screen: EditDeck,
+    navigationOptions: {
+      headerStyle: styles.headerNavigation
+    }
   },
   Deck: {
-    screen: Deck
+    screen: Deck,
+    navigationOptions: {
+      headerStyle: styles.headerNavigation
+    }
   },
   EditQuestion: {
     screen: EditQuestion,
@@ -36,7 +48,10 @@ const Stack = StackNavigator({
     }
   },
   Quiz: {
-    screen: Quiz
+    screen: Quiz,
+    navigationOptions: {
+      headerStyle: styles.headerNavigation
+    }
   }
 });
 
