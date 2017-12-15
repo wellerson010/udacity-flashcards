@@ -1,15 +1,15 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 
-import Styles from '../utils/styles';
+import Styles, { colors } from '../utils/styles';
 
 class Deck extends React.Component {
     static navigationOptions = ({ navigation }) => {
         const { title } = navigation.state.params;
 
         return {
-            title 
+            title
         }
     }
 
@@ -24,7 +24,7 @@ class Deck extends React.Component {
     startQuiz = () => {
         const { deck, navigation } = this.props;
 
-        if (deck.cards.length == 0){
+        if (deck.cards.length == 0) {
             alert('É necessário ao menos 1 card para iniciar o quiz!');
             return;
         }
@@ -36,24 +36,32 @@ class Deck extends React.Component {
 
     render() {
         const { deck } = this.props;
-        console.log('deck', JSON.stringify(this.props.deck ));
+        console.log('deck', JSON.stringify(this.props.deck));
 
         return (
             <View style={[Styles.container, Styles.centralize]}>
-                <Text>
-                    { deck.title }
+                <Text style={style.title}>
+                    {deck.title}
                 </Text>
-                <Text>
-                    { deck.cards.length } cards
+                <Text style={style.cards}>
+                    {deck.cards.length} cartas
                 </Text>
-                <Button 
-                    title='Start Quiz'
+                <TouchableOpacity
                     onPress={this.startQuiz}
-                />
-                <Button
-                    title='Add Card'
+                    style={style.button}
+                >
+                    <Text>
+                        Iniciar Quiz
+                    </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
                     onPress={this.addCard}
-                />
+                    style={style.button}
+                >
+                    <Text>
+                        Adicionar Carta
+                    </Text>
+                </TouchableOpacity>
             </View>
         )
     }
@@ -64,5 +72,19 @@ const mapStateToProps = (state, { navigation }) => (
         deck: state[navigation.state.params.id]
     }
 )
+
+const style = StyleSheet.create({
+    button: {
+        padding: 15,
+        marginBottom: 10,
+        backgroundColor: colors.blue
+    },
+    cards: {
+        marginBottom: 20
+    },
+    title: {
+        fontSize: 30
+    }
+});
 
 export default connect(mapStateToProps)(Deck);

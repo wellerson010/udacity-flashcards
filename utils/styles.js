@@ -15,3 +15,7 @@ export default styles = StyleSheet.create({
         padding: 10
     }
 });
+
+export const colors = {
+    blue: '#73a9e5'
+}

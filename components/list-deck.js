@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, Text, ToolbarAndroid, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, ToolbarAndroid, StyleSheet, FlatList, TouchableOpacity, Animated } from 'react-native';
 import { connect } from 'react-redux';
 import { Ionicons } from '@expo/vector-icons'
 
+import ListDeckRow from './list-deck-row';
 import Styles from '../utils/styles';
 
 class ListDeck extends React.Component {
@@ -46,14 +47,10 @@ class ListDeck extends React.Component {
                 <FlatList
                     data={dataToFlatList}
                     renderItem={({ item }) => (
-                        <TouchableOpacity style={styles.itemList} onPress={() => this.goToDeck(item)}>
-                            <Text style={styles.itemListHeader}>
-                                {item.title}
-                            </Text>
-                            <Text>
-                                {item.cards.length} cards
-                            </Text>
-                        </TouchableOpacity>
+                        <ListDeckRow
+                            item={item}
+                            handleItemTap={this.goToDeck}
+                        />
                     )}
                     keyExtractor={(item) => item.id}
                 />
