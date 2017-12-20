@@ -1,11 +1,16 @@
 import React from 'react';
-import { View, Text, TextInput, Button } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 
+import Styles from '../utils/styles';
 import { saveCard } from '../utils/api';
 import { addCard } from '../actions';
 
 class EditQuestion extends React.Component {
+    static navigationOptions = {
+        title: 'Nova Pergunta'
+    }
+
     state = {
         question: '',
         answer: ''
@@ -35,30 +40,45 @@ class EditQuestion extends React.Component {
         const { question, answer } = this.state;
 
         return (
-            <View>
+            <View style={styles.container}>
                 <Text>
-                    Question
+                    Pergunta
                 </Text>
                 <TextInput
+                    style={styles.input}
                     value={question}
                     onChangeText={(question) => this.setState({ question })}
                 />
                 <Text>
-                    Answer
+                    Resposta
                 </Text>
                 <TextInput
+                    style={styles.input}
                     value={answer}
                     onChangeText={(answer) => this.setState({ answer })}
                 />
 
-                <Button
-                    title='Save Card'
+                <TouchableOpacity
+                    style={Styles.button}
                     onPress={this.save}
-                />
+                >
+                    <Text>
+                        Salvar
+                </Text>
+                </TouchableOpacity>
             </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        padding: 10,
+    },
+    input: {
+        padding: 7
+    }
+});
 
 const mapStateToProps = (state, { navigation }) => {
     const { deckId } = navigation.state.params;

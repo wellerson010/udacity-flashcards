@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 
 import QuizQuestion from './quiz-question';
@@ -7,11 +7,11 @@ import Styles from '../utils/styles';
 import { clearNotification, notification } from '../utils/helper'
 
 class Quiz extends React.Component {
-    static navigationOptions = ({navigation}) => {
-        const { state: { params: { actual = 0, total = 0, finished = false }} } = navigation;
+    static navigationOptions = ({ navigation }) => {
+        const { state: { params: { actual = 0, total = 0, finished = false } } } = navigation;
 
         return {
-            title: (finished)?'Finished':`${actual}/${total}`
+            title: (finished) ? 'Finalizado' : (total === 0) ? 'Carregando...' : `${actual}/${total}`
         }
     }
 
@@ -21,7 +21,7 @@ class Quiz extends React.Component {
         answers: []
     }
 
-    componentDidMount(){
+    componentDidMount() {
         const { cards, navigation } = this.props;
 
         navigation.setParams({
@@ -31,7 +31,7 @@ class Quiz extends React.Component {
         });
     }
 
-    correctAnswer = () =>{
+    correctAnswer = () => {
         this.nextQuestion(true);
     }
 
@@ -48,22 +48,22 @@ class Quiz extends React.Component {
     nextQuestion = (isAnswerCorrect) => {
         const { navigation, cards } = this.props;
         const { questionIndex } = this.state;
-        
+
         const nextQuestionIndex = questionIndex + 1;
 
-        if (nextQuestionIndex == cards.length){
+        if (nextQuestionIndex == cards.length) {
             navigation.setParams({
                 finished: true
             });
 
             clearNotification().then(notification);
         }
-        else{
+        else {
             navigation.setParams({
                 actual: nextQuestionIndex + 1
             });
         }
-        
+
 
         this.setState((state) => ({
             questionIndex: ++state.questionIndex,
@@ -77,7 +77,7 @@ class Quiz extends React.Component {
 
         navigation.setParams({
             finished: false,
-            actual: 1 
+            actual: 1
         });
 
         this.setState({
@@ -87,29 +87,39 @@ class Quiz extends React.Component {
         });
     }
 
-    showAnswer = (value) => this.setState({showAnswer: value});
+    showAnswer = (value) => this.setState({ showAnswer: value });
 
-    render(){
+    render() {
         const { questionIndex, showAnswer, answers } = this.state;
         const { cards } = this.props;
 
-        if (questionIndex == cards.length){
+        if (questionIndex == cards.length) {
             const totalCorrectAnswers = answers.filter(answer => answer).length;
             const totalIncorrectAnswers = cards.length - totalCorrectAnswers;
             const perc = totalCorrectAnswers / cards.length * 100;
 
             return (
-                <View style={Styles.container}>
-                    <Text> {totalCorrectAnswers} / {totalIncorrectAnswers} </Text>
-                    <Text> { perc } % </Text>
-                    <Button
-                        title='Restart Quiz'
+                <View style={[Styles.container, styles.container]}>
+                    <Text style={styles.labelAnswerCorrect}> Respostas certas: {totalCorrectAnswers} </Text>
+                    <Text style={styles.labelAnswerWrong}> Respostas erradas: {totalIncorrectAnswers} </Text>
+                    <Text> Total de respostas: {totalCorrectAnswers + totalIncorrectAnswers} </Text>
+                    <Text style={styles.labelPerc}> Você acertou {perc}% das respostas! </Text>
+                    <TouchableOpacity
+                        style={Styles.button}
                         onPress={this.restartQuiz}
-                    />
-                    <Button 
-                        title='Go Back'
+                    >
+                        <Text>
+                            Reiniciar Quiz
+                        </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={Styles.button}
                         onPress={this.goBack}
-                    />
+                    >
+                        <Text>
+                            Voltar
+                        </Text>
+                    </TouchableOpacity>
                 </View>
             )
         }
@@ -117,7 +127,7 @@ class Quiz extends React.Component {
         const questionActual = cards[questionIndex];
 
         return (
-            <QuizQuestion 
+            <QuizQuestion
                 question={questionActual.question}
                 showAnswer={showAnswer}
                 answer={questionActual.answer}
@@ -128,6 +138,21 @@ class Quiz extends React.Component {
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        padding: 10
+    },
+    labelAnswerCorrect: {
+        color: '#229307'
+    },
+    labelAnswerWrong: {
+        color: '#aa0808'
+    },
+    labelPerc: {
+        marginBottom: 15
+    }
+});
 
 const mapStateToProps = (state, { navigation }) => {
     const { deckId } = navigation.state.params;

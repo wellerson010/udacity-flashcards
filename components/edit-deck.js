@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 
 import Styles from '../utils/styles';
@@ -8,7 +8,7 @@ import { addDeck } from '../actions';
 
 class EditDeck extends React.Component {
     static navigationOptions = {
-        title: 'New Deck'
+        title: 'Novo Deck'
     }
 
     state = {
@@ -36,17 +36,21 @@ class EditDeck extends React.Component {
 
         return (
             <View style={[Styles.container, Styles.containerPadding]}>
-                <Text style={styles.title}>Title</Text>
+                <Text style={styles.title}>Nome</Text>
                 <TextInput
                     style={Styles.input}
                     value={title}
                     onChangeText={(value) => this.setState({title: value})}
                 />
 
-                <Button 
+                <TouchableOpacity 
+                    style={Styles.button}
                     onPress={this.save}
-                    title='Criar Deck'
-                />
+                >
+                    <Text>
+                    Criar Deck
+                    </Text>
+                </TouchableOpacity>
             </View>
         );
     }

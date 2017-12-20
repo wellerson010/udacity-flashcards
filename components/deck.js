@@ -25,7 +25,7 @@ class Deck extends React.Component {
         const { deck, navigation } = this.props;
 
         if (deck.cards.length == 0) {
-            alert('É necessário ao menos 1 card para iniciar o quiz!');
+            alert('É necessário ao menos 1 carta (pergunta) para iniciar o quiz!');
             return;
         }
 
@@ -48,7 +48,7 @@ class Deck extends React.Component {
                 </Text>
                 <TouchableOpacity
                     onPress={this.startQuiz}
-                    style={style.button}
+                    style={Styles.button}
                 >
                     <Text>
                         Iniciar Quiz
@@ -56,10 +56,10 @@ class Deck extends React.Component {
                 </TouchableOpacity>
                 <TouchableOpacity
                     onPress={this.addCard}
-                    style={style.button}
+                    style={Styles.button}
                 >
                     <Text>
-                        Adicionar Carta
+                        Criar Nova Pergunta
                     </Text>
                 </TouchableOpacity>
             </View>
@@ -74,11 +74,6 @@ const mapStateToProps = (state, { navigation }) => (
 )
 
 const style = StyleSheet.create({
-    button: {
-        padding: 15,
-        marginBottom: 10,
-        backgroundColor: colors.blue
-    },
     cards: {
         marginBottom: 20
     },

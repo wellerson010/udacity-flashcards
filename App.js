@@ -44,7 +44,7 @@ const Stack = StackNavigator({
   EditQuestion: {
     screen: EditQuestion,
     navigationOptions: {
-      header: null
+      headerStyle: styles.headerNavigation
     }
   },
   Quiz: {
