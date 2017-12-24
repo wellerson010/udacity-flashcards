@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Keyboard } from 'react-native';
 import { connect } from 'react-redux';
 
 import Styles from '../utils/styles';
@@ -23,7 +23,12 @@ class EditDeck extends React.Component {
         
         addDeck(deck);
         
-        navigation.goBack();
+        navigation.navigate('Deck', {
+            id: deck.id,
+            title: deck.title
+        });
+
+        Keyboard.dismiss();
 
         this.setState({
             title: ''

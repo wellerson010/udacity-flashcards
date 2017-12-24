@@ -20,6 +20,16 @@ class EditQuestion extends React.Component {
         const { question, answer } = this.state;
         const { navigation, deckId, addCard } = this.props;
 
+        if (!question.trim()){
+            alert('Por favor. preencha a pergunta!');
+            return;
+        }
+
+        if (!answer.trim()){
+            alert('Por favor. preencha a resposta!');
+            return;
+        }
+
         const card = await saveCard({
             answer,
             question,

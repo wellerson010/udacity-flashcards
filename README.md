@@ -6,7 +6,17 @@ O projeto consiste de um app mobile nativo para Android que faz uso dos **flashc
 
 # Como rodar
 
-Este projeto foi inicializado com o [create-react-native-app](https://github.com/react-community/create-react-native-app), tornando necessário que você tenha instalado o [Expo](https://expo.io/). Uma vez feito, basta executar o aplicativo com o comando:
+É preciso ter o Node.js 6 ou superior instalado em sua máquina. Ele pode ser baixado [aqui](https://nodejs.org/en/). É recomendado também instalar o [Yarn](https://yarnpkg.com/lang/en/docs/install/).
+
+Este projeto foi inicializado com o [create-react-native-app](https://github.com/react-community/create-react-native-app), tornando necessário que você tenha instalado o [Expo](https://expo.io/) em seu smartphone.
+
+Com tudo instalado, basta rodar o seguinte comando para instalar todas as dependências:
+
+```
+yarn install
+```
+
+Para executar a aplicação, basta rodar o comando:
 
 ```
 yarn start
